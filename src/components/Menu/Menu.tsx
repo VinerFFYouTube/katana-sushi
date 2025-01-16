@@ -1,8 +1,8 @@
 import { useState } from "react";
-import setDaurma from "../../assets/images/menu/setDaurma.jpg";
-import setNew from "../../assets/images/menu/setNew.jpg";
-import newSetAndPizzaChili from "../../assets/images/menu/newSetAndPizzaChili.jpg";
-import setHot from "../../assets/images/menu/setHot.jpg";
+// import setDaurma from "../../assets/images/menu/setDaurma.jpg";
+// import setNew from "../../assets/images/menu/setNew.jpg";
+// import newSetAndPizzaChili from "../../assets/images/menu/newSetAndPizzaChili.jpg";
+// import setHot from "../../assets/images/menu/setHot.jpg";
 import warmSet from "../../assets/images/menu/warmSet.jpg";
 import setHoliday from "../../assets/images/menu/setHoliday.jpg";
 import setDoubleHit from "../../assets/images/menu/setDoubleHit.jpg";
@@ -47,10 +47,10 @@ import PaymentMethod from "../PaymentMethod/PaymentMethod";
 import "./Menu.css"; // Подключаем кастомные стили
 
 const menuObj = [
-    { name: "Сет дарума с пиццой пепперони", price: 990, image: setDaurma, category: 'сеты' },
-    { name: "Нью сет", price: 600, image: setNew, category: 'сеты' },
-    { name: "Нью сет с пиццой чилли", price: 990, image: newSetAndPizzaChili, category: 'сеты' },
-    { name: "Сет горячий", price: 650, image: setHot, category: 'сеты' },
+    { name: "Сет дарума с пиццой пепперони", price: 990, image: 'https://www.instagram.com/katana.sushi_/p/DDXTLqht3Aq/', category: 'сеты' },
+    { name: "Нью сет", price: 600, image: 'https://www.instagram.com/katana.sushi_/p/DC3pxkuI526/', category: 'сеты' },
+    { name: "Нью сет с пиццой чилли", price: 990, image: 'https://www.instagram.com/katana.sushi_/p/DCCYksNIPu2/', category: 'сеты' },
+    { name: "Сет горячий", price: 650, image: 'https://www.instagram.com/katana.sushi_/p/DCCXXhso_k6/', category: 'сеты' },
     { name: "Тёплый сет", price: 690, image: warmSet, category: 'сеты' },
     { name: "Сет Холидей", price: 1200, image: setHoliday, category: 'сеты' },
     { name: "Сет дабл хит", price: 800, image: setDoubleHit, category: 'сеты' },
