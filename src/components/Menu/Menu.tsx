@@ -1,8 +1,8 @@
 import { useState } from "react";
-// import setDaurma from "../../assets/images/menu/setDaurma.jpg";
-// import setNew from "../../assets/images/menu/setNew.jpg";
-// import newSetAndPizzaChili from "../../assets/images/menu/newSetAndPizzaChili.jpg";
-// import setHot from "../../assets/images/menu/setHot.jpg";
+import setDaurma from "../../assets/images/menu/setDaurma.jpg";
+import setNew from "../../assets/images/menu/setNew.jpg";
+import newSetAndPizzaChili from "../../assets/images/menu/newSetAndPizzaChili.jpg";
+import setHot from "../../assets/images/menu/setHot.jpg";
 import warmSet from "../../assets/images/menu/warmSet.jpg";
 import setHoliday from "../../assets/images/menu/setHoliday.jpg";
 import setDoubleHit from "../../assets/images/menu/setDoubleHit.jpg";
@@ -47,10 +47,10 @@ import PaymentMethod from "../PaymentMethod/PaymentMethod";
 import "./Menu.css"; // Подключаем кастомные стили
 
 const menuObj = [
-    { name: "Сет дарума с пиццой пепперони", price: 990, image: 'https://www.instagram.com/katana.sushi_/p/DDXTLqht3Aq/', category: 'сеты' },
-    { name: "Нью сет", price: 600, image: 'https://www.instagram.com/katana.sushi_/p/DC3pxkuI526/', category: 'сеты' },
-    { name: "Нью сет с пиццой чилли", price: 990, image: 'https://www.instagram.com/katana.sushi_/p/DCCYksNIPu2/', category: 'сеты' },
-    { name: "Сет горячий", price: 650, image: 'https://www.instagram.com/katana.sushi_/p/DCCXXhso_k6/', category: 'сеты' },
+    { name: "Сет дарума с пиццой пепперони", price: 990, image: setDaurma, category: 'сеты' },
+    { name: "Нью сет", price: 600, image: setNew, category: 'сеты' },
+    { name: "Нью сет с пиццой чилли", price: 990, image: newSetAndPizzaChili, category: 'сеты' },
+    { name: "Сет горячий", price: 650, image: setHot, category: 'сеты' },
     { name: "Тёплый сет", price: 690, image: warmSet, category: 'сеты' },
     { name: "Сет Холидей", price: 1200, image: setHoliday, category: 'сеты' },
     { name: "Сет дабл хит", price: 800, image: setDoubleHit, category: 'сеты' },
@@ -107,11 +107,18 @@ type Users = {
 
 const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
     const [menu, setMenu] = useState<Menus[]>([]);
+    const [loadedImages, setLoadedImages] = useState<boolean[]>(Array(menuObj.length).fill(false));
 
     let allPrice: number = 0;
     menu.forEach((prices) => {
         allPrice += prices.price * prices.quantity;
     });
+
+    const handleImageLoad = (index: number) => {
+        const updatedLoadedImages = [...loadedImages];
+        updatedLoadedImages[index] = true;
+        setLoadedImages(updatedLoadedImages);
+    };
 
     const addToMenu = (name: string, price: number, quantity: number) => {
         const existingDishIndex = menu.findIndex((dish) => dish.name === name);
@@ -172,7 +179,8 @@ const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
                         .map((dish, index) => (
                             <div key={`${dish.name}-${index}`} className="menu-item">
                                 <div className="menu-item-info">
-                                    <img src={dish.image} alt={dish.name} className="menu-item-image" />
+                                    {!loadedImages[index] && <div className="skeleton skeleton-image"></div>}
+                                    <img src={dish.image} alt={dish.name} className="menu-item-image" onLoad={() => handleImageLoad(index)} />
                                     <div>
                                         <h3 className="menu-item-name">{dish.name}</h3>
                                         <p className="menu-item-price">Цена: {dish.price} сом</p>
