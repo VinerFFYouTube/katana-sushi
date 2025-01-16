@@ -107,18 +107,11 @@ type Users = {
 
 const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
     const [menu, setMenu] = useState<Menus[]>([]);
-    const [loadedImages, setLoadedImages] = useState<boolean[]>(Array(menuObj.length).fill(false));
 
     let allPrice: number = 0;
     menu.forEach((prices) => {
         allPrice += prices.price * prices.quantity;
     });
-
-    const handleImageLoad = (index: number) => {
-        const updatedLoadedImages = [...loadedImages];
-        updatedLoadedImages[index] = true;
-        setLoadedImages(updatedLoadedImages);
-    };
 
     const addToMenu = (name: string, price: number, quantity: number) => {
         const existingDishIndex = menu.findIndex((dish) => dish.name === name);
@@ -179,8 +172,7 @@ const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
                         .map((dish, index) => (
                             <div key={`${dish.name}-${index}`} className="menu-item">
                                 <div className="menu-item-info">
-                                    {!loadedImages[index] && <div className="skeleton skeleton-image"></div>}
-                                    <img src={dish.image} alt={dish.name} className="menu-item-image" onLoad={() => handleImageLoad(index)} />
+                                    <img src={dish.image} alt={dish.name} className="menu-item-image" />
                                     <div>
                                         <h3 className="menu-item-name">{dish.name}</h3>
                                         <p className="menu-item-price">Цена: {dish.price} сом</p>
