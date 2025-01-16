@@ -39,7 +39,7 @@ const PaymentMethod = ({ allPrices, userName, userNumber, userAddres, wholeOrder
         let dataMessage = new Date();
         if (userName.trim() && userNumber.trim() && userAddres.trim()) {
             if (menuLength > 0) {
-                let allMessages = `Заказ от ${userName}:\nдата заказа: ${dataMessage.toLocaleDateString()}\nномер заказа: №${dataMessage.getHours(), dataMessage.getMinutes(), dataMessage.getSeconds()}`
+                let allMessages = `Заказ от ${userName}:\nдата заказа: ${dataMessage.toLocaleDateString()}\nномер заказа: №${dataMessage.getHours()}${dataMessage.getMinutes()}${dataMessage.getSeconds()}\n`
                 wholeOrder.forEach(item => {
                     allMessages += `${item.name} x ${item.quantity} = ${item.price * item.quantity} сом\n`
                 });
@@ -58,7 +58,7 @@ const PaymentMethod = ({ allPrices, userName, userNumber, userAddres, wholeOrder
                 allMessages += `Номер телефона: ${userNumber}\n`
                 allMessages += `Адрес доставки: ${userAddres}\n`
 
-                const numberCafe = '996999577020';
+                const numberCafe = '996997900092';
                 const whatsappUrl = `https://wa.me/${numberCafe}?text=${encodeURIComponent(allMessages)}`;
                 window.open(whatsappUrl, "_blank");
             }
