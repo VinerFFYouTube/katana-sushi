@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Menu from "../Menu/Menu";
+import reklama1 from '../../assets/images/reklama/reklama1.png'
+import reklama2 from '../../assets/images/reklama/reklama2.png'
+import reklama3 from '../../assets/images/reklama/reklama3.png'
 
 
 const OrderDetails = () => {
@@ -38,6 +41,28 @@ const OrderDetails = () => {
                 <input type="number" id="phone" placeholder="Ваш номер телефона" required onChange={(e) => numberLimitFunction(e.target.value)} />
                 <input maxLength={30} type="text" id="address" placeholder="Ваш адрес для доставки" required onChange={(e) => setAddress(e.target.value)} />
             </section>
+            {/* рекламный баннер */}
+            <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img src={reklama1} className="d-block w-100" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                        <img src={reklama2} className="d-block w-100" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                        <img src={reklama3} className="d-block w-100" alt="..." />
+                    </div>
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                </button>
+            </div>
             <Menu names={inputName} phones={inputPhone} addres={inputAddress} isPhoneValid={isPhoneValid} />
         </>
     );

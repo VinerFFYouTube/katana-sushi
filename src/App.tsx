@@ -8,12 +8,13 @@ function App() {
   return (
     <div className='container'>
       <OrderDetails />
-      <footer>
+      <footer id='footer'>
         <p>контакты разработчика</p>
         <a href="https://www.instagram.com/ada__zub/">
           <img src={instagramIcon} alt="instagramIcon" />
         </a>
       </footer>
+      <a href="#footer" id='scrollDown'>перейти к заказу</a>
     </div>
   )
 }
