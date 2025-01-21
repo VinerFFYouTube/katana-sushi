@@ -147,6 +147,7 @@ const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
     const handleCategoryChange = (category: string) => {
         setSelectedCategory(category);
     };
+    
 
     return (
         <>
