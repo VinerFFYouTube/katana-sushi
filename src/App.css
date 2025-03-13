@@ -1,46 +1,3 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
-
 * {
   margin: 0;
   padding: 0;
@@ -113,7 +70,7 @@ button {
   display: block;
 }
 
-button:hover {
+button.add-btn:hover {
   background-color: #45a049;
 }
 
@@ -139,9 +96,6 @@ button:hover {
 .menu-item-details {
   display: flex;
   width: 100%;
-  /* justify-content: space-between; */
-  /* flex-grow: 1; */
-  /* margin-right: auto; */
 }
 
 .menu-item-info h3 {
@@ -162,6 +116,17 @@ button:hover {
   margin: auto 0px auto;
 }
 
+#scrollDown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
 /* Р С’Р Т‘Р В°Р С—РЎвЂљР С‘Р Р†Р Р…Р С•РЎРѓРЎвЂљРЎРЉ */
 @media (max-width: 768px) {
   .container {
@@ -169,7 +134,7 @@ button:hover {
   }
 
   header h1 {
-      font-size: 2rem;
+      font-size: 3rem;
   }
 
   .menu-item {
@@ -212,7 +177,7 @@ button:hover {
 
 @media (max-width: 480px) {
   header h1 {
-      font-size: 1.8rem;
+      font-size: 1rem;
   }
 
   button {
@@ -223,10 +188,13 @@ button:hover {
       width: 120px;
       height: 120px;
   }
-
-  /* Р вЂќР В»РЎРЏ Р СР С•Р В±Р С‘Р В»РЎРЉР Р…РЎвЂ№РЎвЂ¦ РЎС“РЎРѓРЎвЂљРЎР‚Р С•Р в„–РЎРѓРЎвЂљР Р† РЎС“РЎРѓРЎвЂљР В°Р Р…Р В°Р Р†Р В»Р С‘Р Р†Р В°Р ВµР С РЎв‚¬Р С‘РЎР‚Р С‘Р Р…РЎС“ 320px Р Т‘Р В»РЎРЏ Р С—Р С•Р В»РЎРЏ Р Р†Р Р†Р С•Р Т‘Р В° РЎРѓРЎС“Р СР СРЎвЂ№ РЎРѓР Т‘Р В°РЎвЂЎР С‘ */
+  
   #cash-amount {
       width: 320px;
+  }
+  #scrollDown {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 }
 
@@ -284,15 +252,4 @@ footer p {
 footer a img {
   width: 50px;
   height: 50px;
-}
-
-#scrollDown {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
 }

@@ -45,7 +45,7 @@ import subo1 from "../../assets/images/menu/subo1.jpg";
 
 import PaymentMethod from "../PaymentMethod/PaymentMethod";
 import "./Menu.css"; // Подключаем кастомные стили
-const menuObj = [
+export const menuObj = [
     { name: "Сет дарума", price: 600, image: setDaurma, category: 'сеты' },
     { name: "Сет дарума с пиццой пепперони", price: 990, image: setNew, category: 'сеты' },
     { name: "Нью сет", price: 600, image: newSetAndPizzaChili, category: 'сеты' },
@@ -151,27 +151,27 @@ const Menu = ({ names, phones, addres, isPhoneValid }: Users) => {
 
     return (
         <>
-            <section id="filter" className='filter-section'>
-                <button className={`filter-btn ${selectedCategory === "фри и стрипсы" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("фри и стрипсы")}>фри и стрипсы</button>
-                <button className={`filter-btn ${selectedCategory === "сеты" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("сеты")}>сеты</button>
-                <button className={`filter-btn ${selectedCategory === "пиццы" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("пиццы")}>пиццы</button>
-                <button className={`filter-btn ${selectedCategory === "суши" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("суши")}>суши</button>
-                <button className={`filter-btn ${selectedCategory === "напитки" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("напитки")}>Напитки</button>
-                <button className={`filter-btn ${selectedCategory === "" ? "active" : ""}`}
-                    onClick={() => handleCategoryChange("")}>Все</button>
-            </section>
+            <div className="burger_menu">
+                <button className="btn_burger" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {/* категории */}
+                </button>
+                <ul className="dropdown-menu dropdown-menu-dark">
+                    <li><button className="dropdown-item active" onClick={() => handleCategoryChange("фри и стрипсы")}>фри и стрипсы</button></li>
+                    <li><button className="dropdown-item" onClick={() => handleCategoryChange("сеты")}>сеты</button></li>
+                    <li><button className="dropdown-item" onClick={() => handleCategoryChange("пиццы")}>пиццы</button></li>
+                    <li><button className="dropdown-item" onClick={() => handleCategoryChange("суши")}>суши</button></li>
+                    <li><button className="dropdown-item" onClick={() => handleCategoryChange("напитки")}>напитки</button></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><button className="dropdown-item" onClick={() => handleCategoryChange("")}>Все</button></li>
+                </ul>
+            </div >
 
             <section id="menu-items" className="menu-section">
                 <div className="menu-container">
                     {menuObj
                         .filter(dish => selectedCategory === "" || dish.category === selectedCategory)
                         .map((dish, index) => (
-                            <div key={`${dish.name}-${index}`} className="menu-item">
+                            <div key={`${dish.name}-${index}`} id={dish.name} className="menu-item">
                                 <div className="menu-item-info">
                                     <img src={dish.image} alt={dish.name} className="menu-item-image" />
                                     <div>

@@ -12,14 +12,33 @@ const OrderDetails = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isPhoneValid, setIsPhoneValid] = useState(false);
 
+    // const numberLimitFunction = (value: string) => {
+    //     const sanitizedValue = value.replace(/\D/g, "");
+
+    //     if (sanitizedValue.length > 9) {
+    //         setErrorMessage("Номер телефона не может быть длиннее 9 цифр.");
+    //         setIsPhoneValid(false);
+    //     } else if (sanitizedValue.length < 9) {
+    //         setErrorMessage("Номер телефона должен содержать максимум 9 цифр.");
+    //         setIsPhoneValid(false);
+    //     } else {
+    //         setErrorMessage("");
+    //         setIsPhoneValid(true);
+    //     }
+
+    //     setPhone(sanitizedValue);
+    // };
+
     const numberLimitFunction = (value: string) => {
+        // Оставляем только цифры
         const sanitizedValue = value.replace(/\D/g, "");
 
-        if (sanitizedValue.length > 12) {
-            setErrorMessage("Номер телефона не может быть длиннее 12 цифр.");
+        // Ограничиваем ввод до 9 цифр
+        if (sanitizedValue.length > 9) {
+            setErrorMessage("Номер телефона не может быть длиннее 9 цифр.");
             setIsPhoneValid(false);
         } else if (sanitizedValue.length < 9) {
-            setErrorMessage("Номер телефона должен содержать минимум 9 цифр.");
+            setErrorMessage("Номер телефона должен содержать 9 цифр.");
             setIsPhoneValid(false);
         } else {
             setErrorMessage("");
@@ -28,19 +47,30 @@ const OrderDetails = () => {
 
         setPhone(sanitizedValue);
     };
+
     return (
         <>
-            <header>
-                <h1>онлайн меню KATANA SUSHI</h1>
-            </header>
-
             <section id="contact-info" className="form-section">
                 <h2>Ваши контактные данные</h2>
-                <input maxLength={15} type="text" id="first-name" placeholder="Ваше имя" required onChange={(e) => setName(e.target.value)} />
-                {errorMessage && <p style={{ color: 'red' }} className="error-message">{errorMessage}</p>}
-                <input type="number" id="phone" placeholder="Ваш номер телефона" required onChange={(e) => numberLimitFunction(e.target.value)} />
-                <input maxLength={30} type="text" id="address" placeholder="Ваш адрес для доставки" required onChange={(e) => setAddress(e.target.value)} />
+                <input type="text" id="first-name" placeholder="Ваше имя" required onChange={(e) => setName(e.target.value)} maxLength={15} />
+
+                {errorMessage && <p style={{ color: 'red', margin: 'auto' }} className="error-message">{errorMessage}</p>}
+                <div style={{ display: 'flex' }}>
+                    <span style={{ paddingRight: '10px', marginTop: '11px' }}>+996</span>
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="Ваш номер телефона"
+                        required
+                        onChange={(e) => numberLimitFunction(e.target.value)}
+                        value={inputPhone}
+                        maxLength={9} // Ограничиваем количество цифр
+                    />
+                </div>
+
+                <input style={{ margin: 'auto' }} maxLength={30} type="text" id="address" placeholder="Ваш адрес для доставки" required onChange={(e) => setAddress(e.target.value)} />
             </section>
+
             {/* рекламный баннер */}
             <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">

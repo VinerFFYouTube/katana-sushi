@@ -34,6 +34,7 @@ const PaymentMethod = ({ allPrices, userName, userNumber, userAddres, wholeOrder
     //     }
     // }
 
+
     const handleSetOrder = () => {
         let dataMessage = new Date();
         if (userName.trim() && userNumber.trim() && userAddres.trim()) {
@@ -54,7 +55,7 @@ const PaymentMethod = ({ allPrices, userName, userNumber, userAddres, wholeOrder
 
                 allMessages += `\nКонтактные данные\n`
                 allMessages += `Имя: ${userName}\n`
-                allMessages += `Номер телефона: ${userNumber}\n`
+                allMessages += `Номер телефона: +996${userNumber}\n`
                 allMessages += `Адрес доставки: ${userAddres}\n`
 
                 const numberCafe = '996997900092';
@@ -64,6 +65,7 @@ const PaymentMethod = ({ allPrices, userName, userNumber, userAddres, wholeOrder
         }
 
     }
+
 
 
 
