@@ -12,7 +12,7 @@ const Header = () => {
     return (
         <>
             <header>
-                <h1>онлайн меню KATANA SUSHI</h1>
+                <h1>Katana Sushi — вкусные суши в Бишкеке с доставкой</h1>
                 <input type="text" placeholder="поиск блюда" onChange={e => setQuery(e.target.value)} value={query} />
                 {query.length > 0 &&
                     <ul className="form-section">
